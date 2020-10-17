@@ -8,7 +8,7 @@ from datetime import date, datetime
 def lambda_handler(event, context):
     
     sFilter = str(event["params"]["path"]["status"])
-    STATE_MACHINE_ARN = 'arn:aws:states:us-east-1:549193514663:stateMachine:OrderSystemStateMachine'
+    STATE_MACHINE_ARN = 'YOUR ARN STATE MACHINE'
     sfn = boto3.client('stepfunctions')
     
     try:
@@ -20,7 +20,7 @@ def lambda_handler(event, context):
         obj_dump = json.dumps(response.get("executions"), indent=4, sort_keys=True, default=str) //Prepare format to json
         obj_final = json.loads(obj_dump)
     except:
-        msj = '{"message": "Error", "Detail": "El estatus ingresado no existe"}'
+        msj = '{"message": "Error", "Detail": "Failed"}'
         msj = json.loads(msj)
         return msj
     
