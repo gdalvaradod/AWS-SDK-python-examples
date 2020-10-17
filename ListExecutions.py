@@ -17,7 +17,7 @@ def lambda_handler(event, context):
             statusFilter=sFilter,
             maxResults=100
         )
-        obj_dump = json.dumps(response.get("executions"), indent=4, sort_keys=True, default=str)
+        obj_dump = json.dumps(response.get("executions"), indent=4, sort_keys=True, default=str) //Prepare format to json
         obj_final = json.loads(obj_dump)
     except:
         msj = '{"message": "Error", "Detail": "El estatus ingresado no existe"}'
